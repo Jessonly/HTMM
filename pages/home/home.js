@@ -191,7 +191,9 @@ Page( {
       WxSearch.init(
         that,  // 本页面一个引用
         ["纸尿裤","奶粉"], // 热点搜索推荐，[]表示不使用
-        that.mySearchFunction // 提供一个搜索回调函数
+        [],
+        that.mySearchFunction, // 提供一个搜索回调函数
+        that.goBackFunction
       );
 
     console.log( 'onLoad' );
@@ -207,6 +209,12 @@ Page( {
   // 4 搜索回调函数  
   mySearchFunction: function (value) {
     // do your job here
+    wx.redirectTo({
+      url: 'wxSearchView/index/index?searchValue=' + value
+    })
+  },
+
+  goBackFunction: function() {
     wx.redirectTo({
       url: 'wxSearchView/index/index?searchValue=' + value
     })
