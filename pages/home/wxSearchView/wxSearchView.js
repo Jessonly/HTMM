@@ -17,10 +17,15 @@
 // 提示集合
 var __tipKeys = [];
 // 搜索回调函数 
-function searchFunction(searchValue) {
-  alert(searchValue);
+function searchFunction(value){
+  wx.showToast({
+    title: value,
+    icon: 'success',
+    duration: 3000
+  });
 }
 // 返回函数 
+var __searchFunction = null;
 var __goBackFunction = null;
 // 应用变量
 var __that = null;
@@ -56,6 +61,11 @@ function init(that, hotKeys, tipKeys, searchFunction, goBackFunction) {
 
 // 搜索框输入时候操作
 function wxSearchInput(e) {
+  wx.showToast({
+    title: e.detail.value,
+    icon: 'success',
+    duration: 2000
+  });
   var inputValue = e.detail.value;
   // 页面数据
   var temData = __that.data.wxSearchData;
